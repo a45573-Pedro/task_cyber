@@ -1,0 +1,158 @@
+1. Instalação do Nginx
+Primeiro, atualize o índice de pacotes do seu sistema e instale o Nginx:
+
+sudo apt update
+sudo apt install nginx
+Depois da instalação, o Nginx deve iniciar automaticamente. Você pode verificar o status dele com:
+
+sudo systemctl status nginx
+2. Criar o Diretório Protegido
+Crie um diretório chamado protected no diretório raiz do documento do Nginx. Por padrão, o diretório raiz no Nginx está localizado em /var/www/html.
+
+sudo mkdir /var/www/html/protected
+3. Criar o Arquivo index.html
+Crie um arquivo index.html dentro do diretório protected e adicione seu e-mail de estudante a ele:
+
+echo "seu_email@exemplo.com" | sudo tee /var/www/html/protected/index.html
+4. Configurar HTTPS no Nginx
+Para configurar o HTTPS, você precisará de um certificado SSL. Você pode obter um gratuitamente através do Let's Encrypt ou gerar um certificado autoassinado para testes.
+
+Usando Let's Encrypt (recomendado para produção):
+Instale o Certbot e o plugin Nginx:
+
+sudo apt install certbot python3-certbot-nginx
+Obtenha e instale o certificado:
+
+sudo certbot --nginx -d seudominio.com
+Siga as instruções no terminal. Certbot modificará sua configuração do Nginx e renovará o certificado automaticamente.
+
+Usando um Certificado Autoassinado (para desenvolvimento/testes):
+Gere um certificado autoassinado:
+
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
+Depois, atualize a configuração do Nginx para usar o certificado. Edite ou crie um arquivo de configuração em /etc/nginx/sites-available para incluir a configuração SSL.
+
+5. Configurar Autenticação Básica
+Primeiro, crie um arquivo de senha usando o htpasswd. Você precisará do pacote apache2-utils:
+
+sudo apt-get install apache2-utils
+sudo htpasswd -c /etc/nginx/.htpasswd usuario
+Substitua usuario pelo nome de usuário desejado. Você será solicitado a criar uma senha.
+
+Então, configure o Nginx para requerer autenticação para acessar o diretório protected. Edite o arquivo de configuração do seu site em /etc/nginx/sites-available (por exemplo, o arquivo padrão para o site default) e adicione o seguinte dentro do bloco server, ajustando o caminho do diretório conforme necessário:
+
+nginx
+location /protected {
+    auth_basic "Área restrita";
+    auth_basic_user_file /etc/nginx/.htpasswd;
+}
+Após fazer as alterações necessárias, teste a configuração do Nginx para erros:
+
+sudo nginx -t
+Se não houver erros, recarregue o Nginx para aplicar as alterações:
+
+sudo systemctl reload nginx
+Isso configurará seu servidor Nginx para servir conteúdo sobre HTTP e HTTPS, com um diretório protected que requer autenticação básica para acessar.
+
+
+
+
+
+pedro:
+
+su -
+
+apt install sudo
+
+nano /etc/sudoers
+
+%sudo  ALL=(ALL:ALL)ALL
+pedro  ALL=(ALL:ALL)ALL
+
+pedro:
+
+sudo apt update
+sudp apt upgrade
+
+sudo apt install nginx
+
+sudo mkdir /var/www/html/protected
+
+suno nano  /var/www/html/protected/index.html
+
+<html>
+<head>
+<title>Protected</title>
+</head>
+<body>
+<h1>Bem vindo</h1>
+</body>
+</html>
+
+
+sudo mkdir /etc/nginx/ssl
+
+sudo openssl req -x509 -nodes -days 365 -newkkey rsa:2048 -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt
+
+ip a
+
+copiar ip inet ens33
+
+sudo nano nano /etc/nginx/ssl/nginx.crt
+sudo nano nano /etc/nginx/ssl/nginx.key
+
+sudo nano /etc/nginx/sites-available/default
+
+server {
+
+	listen 80 default_server;
+	server_name ip;
+
+	(...)
+
+	index index.html;
+	location /protected {
+		auth_basic "Restricted Content";
+		auth_basic_user_file /etc/nginx/.htpasswd;
+		
+		try_file $uri $uri/ =404;
+
+	location / {
+		return 301 https://$host$request_uri;
+		}
+
+
+server {
+	listen 443 ssl default_Server;
+	server_name ip;
+
+	ssl_certificate /etc/nginx/ssl/nginx.crt;
+	ssl_certificate_key /etc/nginx/ssl/nginx.key;
+
+	root /var/www/html;
+	index index.html;
+
+	location /protected {
+		auth_basic "Restricted Content";
+		auth_basic_user_files /etc/nginx/.htpasswd;
+
+		try_file $uri $uri/ =404;
+	
+}
+
+sudo apt install apache2-utils 
+
+sudo htpasswd -c /etc/nginx/.htpasswd pedro 
+
+sudo nano /etc/nginx/sites-enable/default (verificar se esa tudo bem escrito)
+
+sudo nginx -t (verificar sintaxe anteriormente criada)
+
+sudo systemctl restart nginx
+
+
+
+
+https://www.youtube.com/watch?si=DGUjpw1Hh5K69a2B&v=DM65_JyGxCo&feature=youtu.be
+
+
