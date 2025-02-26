@@ -1,0 +1,99 @@
+Grasshopper,Answer,Journeyman,Answer,Networking Nomad,Answer
+Getting Started,,Devices,,Network Sharing,
+Q1,Linus Torvalds,Q1,/dev,Q1,scp
+Q2,,Q2,c,Q2,rsync
+Q3,rolling,Q3,sdb1,Q3,SimpleHTTPServer
+Q4,RPM,Q4,/sys,Q4,automount
+Q5,debian,Q5,udev,Q5,cifs
+Q6,fedora,Q6,lsusb,Network Basics,
+Q7,ubuntu,Q7,bs,Q1,LAN
+Q8,portage,The Filesystem,,Q2,OSI
+Q9,pacman,Q1,/var,Q3,Application
+Q10,YaST,Q2,ext4,Q4,4
+Command Line,,Q3,extended,Q5,Application
+Q1,Hello World,Q4,mkpart,Q6,TCP
+Q2,pwd,Q5,mkfs,Q7,subnets
+Q3,cd ..,Q6,mount,Q8,ARP
+Q4,ls -a,Q7,/etc/fstab,Q9,"Discover, offer, request, ack"
+Q5,touch myfile,Q8,swapon,Subnetting,
+Q6,file ,Q9,df,Q1,4
+Q7,cat,Q10,fsck,Q2,TRUE
+Q8,q,Q11,df -i,Q3,11111111
+Q9,clear,Q12,ln -s,Q4,1111011
+Q10,-r,Boot the System,,Q5,
+Q11,mv cat dog,Q1,init,Q6,NAT
+Q12,mkdir,Q2,bootloader,Q7,IPv6
+Q13,rm myfile,Q3,quiet,Routing,
+Q14,-name,Q4,initramfs,Q1,hops
+Q15,help,Q5,Systemd,Q2,Gateway
+Q16,man,Kernel,,Q3,ARP
+Q17,whatis,Q1,kernel,Q4,convergence
+Q18,alias,Q2,0,Q5,FALSE
+Q19,exit,Q3,system call,Q6,OSPF
+Text-Fu,,Q4,uname -r,Q7,BGP
+Q1, >>,Q5,vmlinuz,Network Config,
+Q2,<,Q6,modprobe -r,Q1,ifconfig
+Q3,2>,Init,,Q2,del
+Q4,|,Q1,0,Q3,dhclient
+Q5,env,Q2,sudo service peanut stop,Q4,nm-tool
+Q6,cut -c 1,Q3,Upstart,Q5,arp
+Q7,-s,Q4,sudo initctl restart peanuts,Troubleshooting,
+Q8,-n,Q5,target,Q1,8
+Q9,-f,Q6,sudo systemctl start peanut.service,Q2,ms
+Q10,expand,Q7,sudo shutdown -h +4,Q3,TTL
+Q11,join cat dog cow,Process Utilization,,Q4,443
+Q12,-r,Q1,uptime,Q5,-i
+Q13,tr,Q2,lsof,DNS,
+Q14,uniq,Q3,TRUE,Q1,FALSE
+Q15,wc -w,Q4,uptime,Q2,MX
+Q16,grep,Q5,iostat,Q3,TLD
+Advanced Text-Fu,,Q6,vmstat,Q4,/etc/hosts
+Q1,.,Q7,sar,Q5,BIND
+Q2,,Q8,crontab -e,Q6,dig
+Q3,,Logging,,,
+Q4,/,Q1,rsyslogd,,
+Q5,j,Q2,logger,,
+Q6,i,Q3,syslog,,
+Q7,dd,Q4,dmesg,,
+Q8,:q!,Q5,auth.log,,
+Q9,,Q6,logrotate,,
+Q10,C-x C-f,,,,
+Q11,C-x K,,,,
+Q12,M->,,,,
+Q13,C-h C-h,,,,
+User management,,,,,
+Q1,sudo,,,,
+Q2, /etc/sudoers,,,,
+Q3,*,,,,
+Q4,,,,,
+Q5,0,,,,
+Q6,passwd,,,,
+Permissions,,,,,
+Q1,x,,,,
+Q2,4,,,,
+Q3,chown,,,,
+Q4,umask,,,,
+Q5,4,,,,
+Q6,2,,,,
+Q7,effective,,,,
+Q8,t,,,,
+Processes,,,,,
+Q1,u,,,,
+Q2,?,,,,
+Q3,kernel,,,,
+Q4,fork,,,,
+Q5,0,,,,
+Q6,SIGKILL,,,,
+Q7,SIGTERM,,,,
+Q8,lower,,,,
+Q9,D,,,,
+Q10,/proc,,,,
+Q11,jobs,,,,
+Packages,,,,,
+Q1,,,,,
+Q2,/etc/apt/sources.list,,,,
+Q3,c,,,,
+Q4,,,,,
+Q5,dpkg,,,,
+Q6,apt show,,,,
+Q7,checkinstall,,,,
